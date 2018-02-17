@@ -1,0 +1,389 @@
+<html>
+  <head>
+     <title>Referral links</title>
+  </head>
+  <body>
+  <p>
+    Link
+  </p>
+  <div id="meta-mask-required"></div>
+
+  <div id="network"></div>
+
+  <div id="ownerBalance"></div>
+  <div id="recipientBalance"></div>
+
+  <button onclick="callContract()">click on link</button>
+
+
+  <script>
+      const abi = [
+          {
+              "constant": true,
+              "inputs": [],
+              "name": "name",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "string"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+          },
+          {
+              "constant": false,
+              "inputs": [
+                  {
+                      "name": "_spender",
+                      "type": "address"
+                  },
+                  {
+                      "name": "_value",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "approve",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "bool"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+          },
+          {
+              "constant": true,
+              "inputs": [],
+              "name": "totalSupply",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "uint256"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+          },
+          {
+              "constant": false,
+              "inputs": [
+                  {
+                      "name": "_from",
+                      "type": "address"
+                  },
+                  {
+                      "name": "_to",
+                      "type": "address"
+                  },
+                  {
+                      "name": "_value",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "transferFrom",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "bool"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+          },
+          {
+              "constant": true,
+              "inputs": [],
+              "name": "INITIAL_SUPPLY",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "uint256"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+          },
+          {
+              "constant": true,
+              "inputs": [],
+              "name": "decimals",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "uint8"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+          },
+          {
+              "constant": false,
+              "inputs": [
+                  {
+                      "name": "_spender",
+                      "type": "address"
+                  },
+                  {
+                      "name": "_subtractedValue",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "decreaseApproval",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "bool"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+          },
+          {
+              "constant": true,
+              "inputs": [
+                  {
+                      "name": "_owner",
+                      "type": "address"
+                  }
+              ],
+              "name": "balanceOf",
+              "outputs": [
+                  {
+                      "name": "balance",
+                      "type": "uint256"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+          },
+          {
+              "constant": true,
+              "inputs": [],
+              "name": "symbol",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "string"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+          },
+          {
+              "constant": false,
+              "inputs": [
+                  {
+                      "name": "_to",
+                      "type": "address"
+                  },
+                  {
+                      "name": "_value",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "transfer",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "bool"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+          },
+          {
+              "constant": false,
+              "inputs": [
+                  {
+                      "name": "_spender",
+                      "type": "address"
+                  },
+                  {
+                      "name": "_addedValue",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "increaseApproval",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "bool"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+          },
+          {
+              "constant": true,
+              "inputs": [
+                  {
+                      "name": "_owner",
+                      "type": "address"
+                  },
+                  {
+                      "name": "_spender",
+                      "type": "address"
+                  }
+              ],
+              "name": "allowance",
+              "outputs": [
+                  {
+                      "name": "",
+                      "type": "uint256"
+                  }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+          },
+          {
+              "inputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+          },
+          {
+              "anonymous": false,
+              "inputs": [
+                  {
+                      "indexed": true,
+                      "name": "owner",
+                      "type": "address"
+                  },
+                  {
+                      "indexed": true,
+                      "name": "spender",
+                      "type": "address"
+                  },
+                  {
+                      "indexed": false,
+                      "name": "value",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "Approval",
+              "type": "event"
+          },
+          {
+              "anonymous": false,
+              "inputs": [
+                  {
+                      "indexed": true,
+                      "name": "from",
+                      "type": "address"
+                  },
+                  {
+                      "indexed": true,
+                      "name": "to",
+                      "type": "address"
+                  },
+                  {
+                      "indexed": false,
+                      "name": "value",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "Transfer",
+              "type": "event"
+          }
+      ];
+
+      const tokenAddress = '0x82d50ad3c1091866e258fd0f1a7cc9674609d254';
+
+
+      const owner = '0x627306090abaB3A6e1400e9345bC60c78a8BEf57';
+      const recipient = '0xf17f52151EbEF6C7334FAD080c5704D77216b732';
+
+      var SimpleToken;
+      var simpleTokenInstance;
+
+
+    // MetaMask injects the web3 library for us.
+    window.onload = function() {
+        if (typeof web3 === 'undefined') {
+            document.getElementById('meta-mask-required').innerHTML = 'You need <a href="https://metamask.io/">MetaMask</a> browser plugin to run this example'
+        }
+
+        web3.version.getNetwork((err, netId) => {
+            var network = '';
+            switch (netId) {
+                case "1":
+                    network = 'mainnet'
+                    break
+                case "2":
+                    network = 'Morden test network.'
+                    break
+                case "3":
+                    network = 'ropsten test network.'
+                    break
+                case "4":
+                    network = 'Rinkeby test network.'
+                    break
+                case "42":
+                    network = 'Kovan test network.'
+                    break
+                case "5777":
+                    network = 'Local Ganache.'
+                    break
+                default:
+                    network = 'unknown network.'
+            }
+            document.getElementById('network').innerHTML = ('Network is: <b>' + network + '</b>');
+
+        });
+
+        SimpleToken = web3.eth.contract(abi);
+
+        // instantiate by address
+        simpleTokenInstance = SimpleToken.at(tokenAddress);
+
+        simpleTokenInstance.balanceOf(owner, function(err, result) {
+            document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+        });
+
+        simpleTokenInstance.balanceOf(recipient, function(err, result) {
+            document.getElementById('recipientBalance').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+        });
+
+
+    };
+
+
+
+
+
+
+    function callContract() {
+        simpleTokenInstance.transfer(recipient, 15, function(err, result) {
+            if (result) {
+                simpleTokenInstance.balanceOf(owner, function(err, result) {
+                    document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+                });
+
+                simpleTokenInstance.balanceOf(recipient, function(err, result) {
+                    document.getElementById('recipientBalance').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+                });
+
+            }
+            else {
+                console.log(err); // Dump errors here
+            }
+        });
+    }
+
+  </script>
+  </body>
+</html>
