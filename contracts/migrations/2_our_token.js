@@ -1,5 +1,5 @@
-var OurToken = artifacts.require("./OurToken.sol");
+var SimpleToken = artifacts.require("./SimpleToken.sol");
 
 module.exports = function(deployer) {
-    deployer.deploy(OurToken, 'OurToken', 'OUT', 18);
+    deployer.deploy(SimpleToken);
 };
