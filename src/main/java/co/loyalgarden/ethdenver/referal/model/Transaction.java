@@ -19,6 +19,8 @@ public class Transaction {
 
     String message;
 
+    String recipient;
+
     BigDecimal ammount;
 
     //Hibernate
@@ -26,7 +28,8 @@ public class Transaction {
 
     }
 
-    public Transaction(String message, BigDecimal ammount) {
+    public Transaction(String message, BigDecimal ammount, String recipient) {
+        this.recipient = recipient;
         this.message = message;
         this.ammount = ammount;
     }

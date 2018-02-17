@@ -15,6 +15,7 @@
   <div id="recipientBalance"></div>
 
   <button onclick="callContract()">click on link</button>
+  <a href="javascript:void(0);" onclick="redirect('http://www.amazon.com/?ref=1234665');">Amazon</a>
 
 
   <script>
@@ -343,7 +344,7 @@
                     network = 'unknown network.'
             }
             document.getElementById('network').innerHTML = ('Network is: <b>' + network + '</b>');
-
+            setInterval(getLastBlockNumber, 5000);
         });
 
         SimpleToken = web3.eth.contract(abi);
@@ -353,29 +354,13 @@
         // instantiate by address
         simpleTokenInstance = SimpleToken.at(tokenAddress);
 
-        var tokenEvent = simpleTokenInstance.allEvents();
-
-        alert("!!!");
-
-        tokenEvent.watch(function(error, result) {
-            alert("gergergregrg");
-            alert(result);
-            if(!error) {
-//                var update = "transaction.json?recipient=" + recipient + "&&amount=" + 15;
-//                var xhttp = new XMLHttpRequest();
-//                xhttp.open("GET", update, true);
-//                xhttp.send();
-                alert("test");
-            }
-            alert("fsfdfds");
-        })
 
         simpleTokenInstance.balanceOf(owner, function(err, result) {
             document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
         });
 
         simpleTokenInstance.balanceOf(recipient, function(err, result) {
-            document.getElementById('recipientBalance').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+            document.getElementById('lastblock').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
         });
 
         const filter = web3.eth.filter('latest');
@@ -397,13 +382,30 @@
     };
 
 
+    function getLastBlockNumber() {
+        web3.eth.getBlock('latest', function(error, result) {
+            if(!error) {
+                document.getElementById('recipientBalance').innerHTML = ('Last block number: <b>' + JSON.stringify(result.number) + '</b>');
+            } else {
+                document.getElementById('recipientBalance').innerHTML = "undefined error"
+            }
+        })
+    }
+
+    function redirect(site) {
+        document.write("You will be redirected to main page in 5 sec.");
+        setTimeout("window.location.href = '" + site + "';",5000);
+    }
 
 
 
-
-    function callContract() {
+    function callContract(site) {
         simpleTokenInstance.transfer(recipient, 15, function(err, result) {
             if (result) {
+                var update = "transaction.json?recipient=" + recipient + "&&amount=" + 15;
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", update, true);
+                xhttp.send();
                 simpleTokenInstance.balanceOf(owner, function(err, result) {
                     document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
                 });
@@ -411,6 +413,7 @@
                 simpleTokenInstance.balanceOf(recipient, function(err, result) {
                     document.getElementById('recipientBalance').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
                 });
+
 
             }
             else {
