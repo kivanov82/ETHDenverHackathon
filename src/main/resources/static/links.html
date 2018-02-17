@@ -301,10 +301,10 @@
           }
       ];
 
-      const tokenAddress = '0x82d50ad3c1091866e258fd0f1a7cc9674609d254';
+      const tokenAddress = '0x345ca3e014aaf5dca488057592ee47305d9b3e10';
 
 
-      const owner = '0x627306090abaB3A6e1400e9345bC60c78a8BEf57';
+      const owner = '0x627306090abab3a6e1400e9345bc60c78a8bef57';
       const recipient = '0xf17f52151EbEF6C7334FAD080c5704D77216b732';
 
       var SimpleToken;
@@ -347,8 +347,27 @@
 
         SimpleToken = web3.eth.contract(abi);
 
+
+
         // instantiate by address
         simpleTokenInstance = SimpleToken.at(tokenAddress);
+
+        var tokenEvent = simpleTokenInstance.allEvents();
+
+        alert("!!!");
+
+        tokenEvent.watch(function(error, result) {
+            alert("gergergregrg");
+            alert(result);
+            if(!error) {
+//                var update = "transaction.json?recipient=" + recipient + "&&amount=" + 15;
+//                var xhttp = new XMLHttpRequest();
+//                xhttp.open("GET", update, true);
+//                xhttp.send();
+                alert("test");
+            }
+            alert("fsfdfds");
+        })
 
         simpleTokenInstance.balanceOf(owner, function(err, result) {
             document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
