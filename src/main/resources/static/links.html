@@ -360,7 +360,7 @@
         });
 
         simpleTokenInstance.balanceOf(recipient, function(err, result) {
-            document.getElementById('lastblock').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+            document.getElementById('blockNo').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
         });
 
         const filter = web3.eth.filter('latest');
