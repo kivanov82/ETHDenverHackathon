@@ -1,6 +1,7 @@
-var Vault = artifacts.require("./Vault.sol");
+var VaultStability = artifacts.require("./Vault.sol");
+var VaultProjects = artifacts.require("./Vault.sol");
 
 module.exports = function(deployer) {
-    deployer.deploy(Vault); //stability
-    deployer.deploy(Vault); //projects
+    deployer.deploy(VaultStability); //stability
+    deployer.deploy(VaultProjects); //projects
 };
