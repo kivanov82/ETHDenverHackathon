@@ -142,23 +142,23 @@
   function transfer() {
     simpleTokenInstance.transfer(recipient, 280, function(err, result) {
       if (result) {
+        simpleTokenInstance.transfer(vaultStabilityAddress, 1130, function(err, result) {
+          if (result) {
+            simpleTokenInstance.transfer(vaultProjectAddress, 890, function(err, result) {
+              if (result) {
+                document.getElementById('remove1').innerHTML = '0';
+                document.getElementById('remove2').innerHTML = '0';
+                document.getElementById('remove3').innerHTML = '0';
+                document.getElementById('remove4').innerHTML = '0';
+                document.getElementById('remove5').innerHTML = '0';
+              }
+            });
+          }
+        });
 
       }
     });
-    simpleTokenInstance.transfer(vaultStabilityAddress, 1130, function(err, result) {
-        if (result) {
 
-        }
-    });
-    simpleTokenInstance.transfer(vaultProjectAddress, 890, function(err, result) {
-      if (result) {
-        document.getElementById('remove1').innerHTML = '0';
-        document.getElementById('remove2').innerHTML = '0';
-        document.getElementById('remove3').innerHTML = '0';
-        document.getElementById('remove4').innerHTML = '0';
-        document.getElementById('remove5').innerHTML = '0';
-      }
-    });
 
   }
 
