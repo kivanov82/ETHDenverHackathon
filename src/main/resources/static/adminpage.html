@@ -127,11 +127,11 @@
 
     function getVaultInfo() {
       simpleTokenInstance.balanceOf(vaultStabilityAddress, function(err, result) {
-        document.getElementById('stability').innerHTML = ('Stability funds : <b>' + JSON.stringify(result.c[0]) + '</b>');
+        document.getElementById('stability').innerHTML = ('Stability funds : <b>' + JSON.stringify(result.c[0]) + '</b> JOY');
       });
 
       simpleTokenInstance.balanceOf(vaultProjectAddress, function(err, result) {
-        document.getElementById('project').innerHTML = ('Project funds : <b>' + JSON.stringify(result.c[0]) + '</b>');
+        document.getElementById('project').innerHTML = ('Project funds : <b>' + JSON.stringify(result.c[0]) + '</b> JOY');
       });
 
       simpleTokenInstance.balanceOf(recipient, function(err, result) {
