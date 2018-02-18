@@ -105,7 +105,7 @@
           <div class="w-container">
             <h2 class="heading-2">Your total earnings</h2>
             <div class="balancewrapper w-clearfix">
-              <h3 class="heading-3">1000</h3><img src="images/Joy.svg" width="72" height="72" class="image-4"></div>
+              <h3 class="heading-3" id="mywallet">1000</h3><img src="images/Joy.svg" width="72" height="72" class="image-4"></div>
             <div class="row w-row">
               <div class="w-col w-col-4">
                 <div class="type">
@@ -185,10 +185,18 @@
   <script>
 
       setInterval(getDonationsInfo, 2000);
+      setInterval(getWalletInfo, 2000);
 
       function getDonationsInfo() {
           simpleTokenInstance.balanceOf(event, function(err, result) {
               document.getElementById('collected-1').innerHTML = ('Collected (' + JSON.stringify(result.c[0]) + '/738)');
+          });
+
+      }
+
+      function getWalletInfo() {
+          simpleTokenInstance.balanceOf(recipient, function(err, result) {
+              document.getElementById('mywallet').innerHTML = JSON.stringify(result.c[0]);
           });
 
       }
