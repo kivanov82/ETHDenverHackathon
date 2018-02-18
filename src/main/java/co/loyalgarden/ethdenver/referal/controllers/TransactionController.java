@@ -31,7 +31,7 @@ public class TransactionController {
         transactionRepository.save(transaction);
     }
 
-    @RequestMapping(value = "/getTransations", method = RequestMethod.GET)
+    @RequestMapping(value = "/getTransactions.json", method = RequestMethod.GET)
     List<Transaction> getTransactions(@RequestParam String recipient) {
         return transactionRepository.findByRecipient(recipient);
     }
