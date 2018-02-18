@@ -40,10 +40,11 @@
         </div>
         <div class="w-col w-col-6">
           <h3>Number of users: 100</h3>
-          <h3>Total user balance: 60,000 JOY</h3><a href="#" class="button w-button">reward users</a>
+          <h3>Total user balance: 60,000 JOY</h3>
+          <a href="#" class="button w-button" onclick="transfer();">reward users</a>
           <h3>Vault</h3>
-          <h4>- stability fund: 12000 JOY</h4>
-          <h4>- project funds: 8000 JOY</h4>
+          <h4 id="stability"></h4>
+          <h4 id="project"></h4>
         </div>
       </div>
       <div class="row-2 w-row">
@@ -86,26 +87,15 @@
         network = 'unknown network.'
     }
     document.getElementById('network').innerHTML = ('Network is: <b>' + network + '</b>');
-    setInterval(getLastBlockNumber, 5000);
+    setInterval(getLastBlockNumber, 2000);
+    setInterval(getVaultInfo, 2000)
   });
 
     SimpleToken = web3.eth.contract(abi);
     simpleTokenInstance = SimpleToken.at(tokenAddress);
 
-    Vault = web3.eth.contract(vaultAbi);
-    vaultInstance = Vault.at(vaultAddress);
-//
-//    simpleTokenInstance.balanceOf(owner, function(err, result) {
-//      document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
-//    });
-//
-//    simpleTokenInstance.balanceOf(recipient, function(err, result) {
-//      document.getElementById('blockNo').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
-//    });
-//
-//    simpleTokenInstance.balanceOf(vaultAddress, function(err, result) {
-//      document.getElementById('vaultBalance').innerHTML = ('Vault\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
-//    });
+
+
 
     const filter = web3.eth.filter('latest');
     filter.watch((err, res) => {
@@ -134,6 +124,36 @@
         }
       })
     }
+
+    function getVaultInfo() {
+      simpleTokenInstance.balanceOf(vaultStabilityAddress, function(err, result) {
+        document.getElementById('stability').innerHTML = ('Stability funds : <b>' + JSON.stringify(result.c[0]) + '</b>');
+      });
+
+      simpleTokenInstance.balanceOf(vaultProjectAddress, function(err, result) {
+        document.getElementById('project').innerHTML = ('Project funds : <b>' + JSON.stringify(result.c[0]) + '</b>');
+      });
+    }
+
+  function transfer() {
+    simpleTokenInstance.transfer(vaultStabilityAddress, 10, function(err, result) {
+      if (result) {
+
+      }
+    });
+    simpleTokenInstance.transfer(recipient, 10, function(err, result) {
+      if (result) {
+
+      }
+    });
+    simpleTokenInstance.transfer(vaultProjectAddress, 10, function(err, result) {
+      if (result) {
+
+      }
+    });
+
+  }
+
 </script>
 </body>
 </html>

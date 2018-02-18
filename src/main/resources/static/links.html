@@ -29,7 +29,8 @@
       var simpleTokenInstance;
 
       var Vault;
-      var vaultInstance;
+      var vaultStabilityInstance;
+      var vaultProjectInstance;
 
 
     // MetaMask injects the web3 library for us.
@@ -70,7 +71,7 @@
         simpleTokenInstance = SimpleToken.at(tokenAddress);
 
         Vault = web3.eth.contract(vaultAbi);
-        vaultInstance = Vault.at(vaultAddress);
+        vaultStabilityInstance = Vault.at(vaultStabilityAddress);
 
 //        simpleTokenInstance.balanceOf(owner, function(err, result) {
 //            document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
@@ -80,7 +81,7 @@
 //            document.getElementById('blockNo').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
 //        });
 //
-//        simpleTokenInstance.balanceOf(vaultAddress, function(err, result) {
+//        simpleTokenInstance.balanceOf(vaultStabilityAddress, function(err, result) {
 //            document.getElementById('vaultBalance').innerHTML = ('Vault\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
 //        });
 
@@ -142,7 +143,7 @@
             }
         });
 
-        simpleTokenInstance.transfer(vaultAddress, 125, function(err, result) {
+        simpleTokenInstance.transfer(vaultStabilityAddress, 125, function(err, result) {
             if (result) {
 
             }
