@@ -26,8 +26,8 @@
 .div-block.blockleft {
   width: 20%;
   height: 60vh;
-  background-image: -webkit-linear-gradient(270deg, rgba(41, 180, 177, .78), rgba(41, 180, 177, .78)), url('../images/5a2be7d196bde90001f7a05e_ballet-min.jpg');
-  background-image: linear-gradient(180deg, rgba(41, 180, 177, .78), rgba(41, 180, 177, .78)), url('../images/5a2be7d196bde90001f7a05e_ballet-min.jpg');
+  background-image: -webkit-linear-gradient(270deg, rgba(17, 19, 19, .73), rgba(17, 19, 19, .73)), url('../images/5a2be7d196bde90001f7a05e_ballet-min.jpg');
+  background-image: linear-gradient(180deg, rgba(17, 19, 19, .73), rgba(17, 19, 19, .73)), url('../images/5a2be7d196bde90001f7a05e_ballet-min.jpg');
   background-position: 0px 0px, 50% 100%;
   background-size: auto, cover;
 }
@@ -37,8 +37,8 @@
   height: 60vh;
   padding-top: 20px;
   background-color: #29b4b1;
-  background-image: -webkit-linear-gradient(270deg, rgba(41, 214, 210, .73), rgba(41, 214, 210, .73)), url('../images/img_utrecht-min.jpg');
-  background-image: linear-gradient(180deg, rgba(41, 214, 210, .73), rgba(41, 214, 210, .73)), url('../images/img_utrecht-min.jpg');
+  background-image: -webkit-linear-gradient(270deg, rgba(17, 19, 19, .73), rgba(17, 19, 19, .73)), url('../images/img_utrecht-min.jpg');
+  background-image: linear-gradient(180deg, rgba(17, 19, 19, .73), rgba(17, 19, 19, .73)), url('../images/img_utrecht-min.jpg');
   background-position: 0px 0px, 0px 129%;
   background-size: auto, cover;
   background-attachment: scroll, fixed;
@@ -53,7 +53,7 @@
 .heading {
   display: block;
   color: #fff;
-  font-size: 34px;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -66,7 +66,7 @@
   float: left;
   border-style: solid;
   border-width: 1px 0px 1px 1px;
-  border-color: #28a19f;
+  border-color: transparent;
   border-radius: 10px 0px 0px 10px;
 }
 
@@ -78,10 +78,10 @@
   float: left;
   border-style: solid;
   border-width: 1px 1px 1px 0px;
-  border-color: #28a19f;
+  border-color: transparent;
   border-radius: 0px 10px 10px 0px;
   background-color: #fff;
-  color: #29b4b1;
+  color: #313131;
 }
 
 .webshopdashboard {
@@ -95,14 +95,37 @@
 }
 
 .shopcard {
-  padding: 10px 0px 0px;
+  padding: 0px;
   border: 1px solid #ececec;
   box-shadow: 0 1px 3px 0 #afaaaa;
 }
 
 .imgcontainer {
-  padding-right: 20px;
-  padding-left: 20px;
+  height: 150px;
+  margin-bottom: 0px;
+  padding: 0px 20px;
+}
+
+.imgcontainer.cont2 {
+  margin-bottom: 20px;
+  padding-top: 40px;
+  background-image: url('../images/denver.jpeg');
+  background-position: 0px 0px;
+  background-size: cover;
+}
+
+.imgcontainer.cont2.img2 {
+  background-image: -webkit-linear-gradient(270deg, rgba(237, 46, 123, .39), rgba(237, 46, 123, .39)), url('../images/brassband.jpeg');
+  background-image: linear-gradient(180deg, rgba(237, 46, 123, .39), rgba(237, 46, 123, .39)), url('../images/brassband.jpeg');
+  background-position: 0px 0px, 0px 0px;
+  background-size: auto, cover;
+}
+
+.imgcontainer.cont2.img3 {
+  background-image: -webkit-linear-gradient(270deg, rgba(237, 46, 123, .39), rgba(237, 46, 123, .39)), url('../images/old_theater.jpeg');
+  background-image: linear-gradient(180deg, rgba(237, 46, 123, .39), rgba(237, 46, 123, .39)), url('../images/old_theater.jpeg');
+  background-position: 0px 0px, 0px 0px;
+  background-size: auto, cover;
 }
 
 .percentageinfo {
@@ -119,7 +142,7 @@
 
 .paragraph {
   font-family: 'PT Sans', sans-serif;
-  color: #69c3b6;
+  color: #2fdf67;
   font-size: 16px;
   font-weight: 700;
   text-align: center;
@@ -181,6 +204,7 @@
 .div-block-2 {
   width: 600px;
   margin-left: 15%;
+  text-align: left;
 }
 
 .menubar {
@@ -212,7 +236,7 @@
   margin-bottom: -5px;
   padding-top: 15px;
   padding-bottom: 0px;
-  background-color: #69c3b6;
+  background-color: #2fdf67;
 }
 
 .section {
@@ -273,7 +297,9 @@
 
 .tabs-menu {
   display: block;
-  width: 100%;
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .container-3 {
@@ -282,7 +308,7 @@
 }
 
 .tab-link {
-  width: 33%;
+  width: 31%;
   background-color: #ed2e7b;
 }
 
@@ -308,7 +334,7 @@
   margin-left: auto;
   float: none;
   border-radius: 5px;
-  background-color: #29b4b1;
+  background-color: #2fdf67;
 }
 
 .balancewrapper {
@@ -335,7 +361,7 @@
 }
 
 .amountinteger {
-  text-align: center;
+  text-align: left;
 }
 
 .shoptype {
@@ -375,17 +401,61 @@
 }
 
 .eventcard {
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 0px;
+  padding-bottom: 20px;
+  padding-left: 0px;
   border: 1px solid #ececec;
   box-shadow: 0 1px 3px 0 #afaaaa;
 }
 
 .eventheading {
+  margin-top: 0px;
+  color: #fcfcfc;
   text-align: center;
 }
 
 .eventdescription {
   float: none;
-  text-align: left;
+  text-align: center;
+}
+
+.showall {
+  display: block;
+  width: 120px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 5px;
+  background-color: #ed2e7b;
+}
+
+.heading-4 {
+  padding-top: 8px;
+  border-top: 1px solid transparent;
+  text-align: center;
+}
+
+.container-4 {
+  padding-top: 14px;
+}
+
+.monetarygoal {
+  display: block;
+  margin-bottom: 10px;
+  background-color: #062336;
+}
+
+.image-5 {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  float: left;
+}
+
+.heading-5 {
+  margin-top: 15px;
+  margin-left: 75px;
+  float: left;
+  color: #fff;
+  font-size: 22px;
 }
