@@ -72,17 +72,17 @@
         Vault = web3.eth.contract(vaultAbi);
         vaultInstance = Vault.at(vaultAddress);
 
-        simpleTokenInstance.balanceOf(owner, function(err, result) {
-            document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
-        });
-
-        simpleTokenInstance.balanceOf(recipient, function(err, result) {
-            document.getElementById('blockNo').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
-        });
-
-        simpleTokenInstance.balanceOf(vaultAddress, function(err, result) {
-            document.getElementById('vaultBalance').innerHTML = ('Vault\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
-        });
+//        simpleTokenInstance.balanceOf(owner, function(err, result) {
+//            document.getElementById('ownerBalance').innerHTML = ('Owner\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+//        });
+//
+//        simpleTokenInstance.balanceOf(recipient, function(err, result) {
+//            document.getElementById('blockNo').innerHTML = ('Recipient\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+//        });
+//
+//        simpleTokenInstance.balanceOf(vaultAddress, function(err, result) {
+//            document.getElementById('vaultBalance').innerHTML = ('Vault\'s balance is : <b>' + JSON.stringify(result.c[0]) + '</b>');
+//        });
 
         const filter = web3.eth.filter('latest');
         filter.watch((err, res) => {
@@ -106,9 +106,9 @@
     function getLastBlockNumber() {
         web3.eth.getBlock('latest', function(error, result) {
             if(!error) {
-                document.getElementById('recipientBalance').innerHTML = ('Last block number: <b>' + JSON.stringify(result.number) + '</b>');
+                document.getElementById('blockNo').innerHTML = ('Last block number: <b>' + JSON.stringify(result.number) + '</b>');
             } else {
-                document.getElementById('recipientBalance').innerHTML = "undefined error"
+                document.getElementById('blockNo').innerHTML = "undefined error"
             }
         })
     }
