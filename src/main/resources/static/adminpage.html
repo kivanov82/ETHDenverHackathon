@@ -32,15 +32,15 @@
       <div class="row-2 w-row">
         <div class="w-col w-col-6">
           <h3>Shop payouts: 50</h3>
-          <h3>Revenue this month: $5000</h3>
-          <h4>                            - users:        $3250</h4>
-          <h4>                            - stab.fund: $1250</h4>
-          <h4>                            - referral:     $250</h4>
-          <h4>                            - fees:          $250</h4>
+          <h3>Revenue this month: $15520</h3>
+          <h4>                            - users:        $9770</h4>
+          <h4>                            - stab.fund: $3250</h4>
+          <h4>                            - referral:     $1250</h4>
+          <h4>                            - fees:          $1250</h4>
         </div>
         <div class="w-col w-col-6">
-          <h3>Number of users: 100</h3>
-          <h3>Total user balance: 60,000 JOY</h3>
+          <h3>Number of users: 170</h3>
+          <h3>Total current user balance: 60,750 JOY</h3>
           <a href="#" class="button w-button" onclick="transfer();">reward users</a>
           <h3>Vault</h3>
           <h4 id="stability"></h4>
@@ -136,17 +136,17 @@
     }
 
   function transfer() {
-    simpleTokenInstance.transfer(vaultStabilityAddress, 10, function(err, result) {
+    simpleTokenInstance.transfer(recipient, 280, function(err, result) {
       if (result) {
 
       }
     });
-    simpleTokenInstance.transfer(recipient, 10, function(err, result) {
-      if (result) {
+    simpleTokenInstance.transfer(vaultStabilityAddress, 1130, function(err, result) {
+        if (result) {
 
-      }
+        }
     });
-    simpleTokenInstance.transfer(vaultProjectAddress, 10, function(err, result) {
+    simpleTokenInstance.transfer(vaultProjectAddress, 890, function(err, result) {
       if (result) {
 
       }

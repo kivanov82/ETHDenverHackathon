@@ -1,6 +1,6 @@
-const tokenAddress = '0x345ca3e014aaf5dca488057592ee47305d9b3e10';
-const vaultStabilityAddress = '0x75c35c980c0d37ef46df04d31a140b65503c0eed';
-const vaultProjectAddress = '0x82d50ad3c1091866e258fd0f1a7cc9674609d254';
+const tokenAddress = '0x4e71920b7330515faf5ea0c690f1ad06a85fb60c';
+const vaultStabilityAddress = '0xde5491f774f0cb009abcea7326342e105dbb1b2e';
+const vaultProjectAddress = '0xd54b47f8e6a1b97f3a84f63c867286272b273b7c';
 
 
 const owner = '0x627306090abab3a6e1400e9345bc60c78a8bef57';
