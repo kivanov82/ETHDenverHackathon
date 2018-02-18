@@ -32,15 +32,15 @@
       <div class="row-2 w-row">
         <div class="w-col w-col-6">
           <h3>Shop payouts: 50</h3>
-          <h3>Revenue this month: $15520</h3>
-          <h4>                            - users:        $9770</h4>
-          <h4>                            - stab.fund: $3250</h4>
-          <h4>                            - referral:     $1250</h4>
-          <h4>                            - fees:          $1250</h4>
+          <h3>Revenue this month: $<b id="remove1">15520</b></h3>
+          <h4>                            - users:        $<b id="remove2">9770</b></h4>
+          <h4>                            - stab.fund: $<b id="remove3">3250</b></h4>
+          <h4>                            - referral:     $<b id="remove4">1250</b></h4>
+          <h4>                            - fees:          $<b id="remove5">1250</b></h4>
         </div>
         <div class="w-col w-col-6">
           <h3>Number of users: 170</h3>
-          <h3>Total current user balance: 60,750 JOY</h3>
+          <h3>Total current user balance: <b id="user"></b> JOY</h3>
           <a href="#" class="button w-button" onclick="transfer();">reward users</a>
           <h3>Vault</h3>
           <h4 id="stability"></h4>
@@ -133,6 +133,10 @@
       simpleTokenInstance.balanceOf(vaultProjectAddress, function(err, result) {
         document.getElementById('project').innerHTML = ('Project funds : <b>' + JSON.stringify(result.c[0]) + '</b>');
       });
+
+      simpleTokenInstance.balanceOf(recipient, function(err, result) {
+        document.getElementById('user').innerHTML = (JSON.stringify(result.c[0]) * 10);
+      });
     }
 
   function transfer() {
@@ -148,7 +152,11 @@
     });
     simpleTokenInstance.transfer(vaultProjectAddress, 890, function(err, result) {
       if (result) {
-
+        document.getElementById('remove1').innerHTML = '0';
+        document.getElementById('remove2').innerHTML = '0';
+        document.getElementById('remove3').innerHTML = '0';
+        document.getElementById('remove4').innerHTML = '0';
+        document.getElementById('remove5').innerHTML = '0';
       }
     });
 
